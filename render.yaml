@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: weather-play-app
+    env: python
+    buildCommand: ""
+    startCommand: python weather_app.py
+    envVars:
+      - key: FLASK_ENV
+        value: production

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Play Predictor</title>
+    <style>
+        body{font -family: Arial, sans-serif; margin: 40px;}
+        lable { display: block; margin-bottom: 10px;}
+        select, button { padding: 5px; margin-top: 5px;}
+        .result { margin-top: 20px; font-size: 1.2em}
+    </style>
+</head>
+<body>
+    <h1>Weather Play Prediction</h1>
+    <form method="POST" action="/predict">
+        <label>Outlook:</label>
+        <select name="outlook">
+            <option value="Sunny">Sunny</option>
+            <option value="Overcast">Overcast</option>
+            <option value="Rain">Rain</option>
+        </select><br><br>
+
+        <label>Temperature:</label>
+        <select name="temperature">
+            <option value="Hot">Hot</option>
+            <option value="Mild">Mild</option>
+            <option value="Cool">Cool</option>
+        </select><br><br>
+
+        <label>Humidity:</label>
+        <select name="humidity">
+            <option value="High">High</option>
+            <option value="Normal">Normal</option>
+        </select><br><br>
+
+        <label>Windy:</label>
+        <select name="windy">
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+
+        <button type="submit">Predict:</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+          <strong>Prediction:</stron> {{ prediction}}
+          <br><em>Input data:</em> {{ input_data}}
+        </div>        
+    {% endif %}
+</body>
+</html>

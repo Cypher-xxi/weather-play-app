@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data Chart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Data Chart</h1>
+        <canvas id="weatherChart" width="400" height="300"></canvas>
+        <a href="/" style="display:block;text-align:center;margin-top:20px;">Back to Home</a>
+    </div>
+    <script>
+        // Example data, replace with dynamic data if needed
+        const labels = ['Sunny', 'Overcast', 'Rainy'];
+        const playYes = [2, 4, 3]; // Example counts for 'yes'
+        const playNo = [2, 0, 1];  // Example counts for 'no'
+
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Play: Yes',
+                    data: playYes,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                },
+                {
+                    label: 'Play: No',
+                    data: playNo,
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)'
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: true, text: 'Play Decision by Outlook' }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('weatherChart'), config);
+    </script>
+</body>
+</html>
